@@ -1,12 +1,13 @@
 import "./listedMovies.css";
-import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
+
 import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { ListContext } from "../../context/listContext/ListContext";
-import { deleteList, getLists } from "../../context/listContext/apiCalls";
+import { deleteList, getLists } from "../../context/listContext/ListApiCalls";
+import { DeleteOutlineOutlined } from "@mui/icons-material";
+import { DataGrid } from "@mui/x-data-grid";
 
-export default function ListList() {
+export default function ListedMovies() {
   const { lists, dispatch } = useContext(ListContext);
 
   useEffect(() => {
@@ -32,7 +33,7 @@ export default function ListList() {
             <Link to={`/list/${params.row._id}`} state={{ list: params.row }}>
               <button className="productListEdit">Edit</button>
             </Link>
-            <DeleteOutline
+            <DeleteOutlineOutlined
               className="productListDelete"
               onClick={() => handleDelete(params.row._id)}
             />

@@ -4,12 +4,11 @@ import {
   AssessmentOutlined,
   EmailOutlined,
   FeedbackOutlined,
-  Inventory2,
   LineStyleOutlined,
+  ListAltOutlined,
   ManageAccountsOutlined,
   MarkunreadOutlined,
   OutlinedFlagTwoTone,
-  Paid,
   People,
   PlayCircle,
   TimelineOutlined,
@@ -58,11 +57,12 @@ function Sidebar() {
                 Movies
               </li>
             </Link>
-
-            <li className="sidebarListItem">
-              <Paid className="sidebarIcons" />
-              Transactions
-            </li>
+            <Link className="link" to="/lists">
+              <li className="sidebarListItem">
+                <ListAltOutlined className="sidebarIcons" />
+                Lists
+              </li>
+            </Link>
             <li className="sidebarListItem">
               <AssessmentOutlined className="sidebarIcons" />
               Reports

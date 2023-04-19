@@ -14,11 +14,7 @@ import {
 export const getLists = async (dispatch) => {
   dispatch(getListsStart());
   try {
-    const res = await axios.get("https://localhost:8800/api/lists", {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
-    });
+    const res = await axios.get("http://localhost:8800/api/lists");
     dispatch(getListsSuccess(res.data));
   } catch (err) {
     dispatch(getListsFailure());
@@ -30,14 +26,8 @@ export const createList = async (list, dispatch) => {
   dispatch(createListStart());
   try {
     const res = await axios.post(
-      "https://localhost:8800/api/lists/add-list",
-      list,
-      {
-        headers: {
-          token:
-            "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-        },
-      }
+      "http://localhost:8800/api/lists/add-list",
+      list
     );
     dispatch(createListSuccess(res.data));
   } catch (err) {
@@ -49,11 +39,7 @@ export const createList = async (list, dispatch) => {
 export const deleteList = async (id, dispatch) => {
   dispatch(deleteListStart());
   try {
-    await axios.delete("/https://localhost:8800/api/lists/delete-list/" + id, {
-      headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-      },
-    });
+    await axios.delete("/http://localhost:8800/api/lists/delete-list/" + id);
     dispatch(deleteListSuccess(id));
   } catch (err) {
     dispatch(deleteListFailure());

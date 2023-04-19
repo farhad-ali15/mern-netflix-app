@@ -10,12 +10,8 @@ import {
 } from "../middlewares/authHandler.js";
 
 const listRouter = express.Router();
-listRouter
-  .route("/add-list")
-  .post(isAuthenticatedUser, isAuthorizedUser(true, false), newList);
-listRouter
-  .route("/delete-list/:id")
-  .delete(isAuthenticatedUser, isAuthorizedUser(true, false), deleteList);
 listRouter.route("/").get(getAllLists);
+listRouter.route("/add-list").post(newList);
+listRouter.route("/delete-list/:id").delete(deleteList);
 
 export default listRouter;
