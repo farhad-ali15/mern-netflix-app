@@ -13,18 +13,12 @@ import {
 } from "../middlewares/authHandler.js";
 
 const movieRouter = express.Router();
-movieRouter
-  .route("/add-movie")
-  .post(isAuthenticatedUser, isAuthorizedUser(true, false), newMovie);
+movieRouter.route("/add-movie").post(newMovie);
 
 movieRouter.route("/").get(getAllMovies);
 movieRouter.route("/random").get(getRandomMovie);
 movieRouter.route("/:id").get(getMovieById);
-movieRouter
-  .route("/update-movie/:id")
-  .put(isAuthenticatedUser, isAuthorizedUser(true, false), updateMovie);
-movieRouter
-  .route("/delete-movie/:id")
-  .delete(isAuthenticatedUser, isAuthorizedUser(true, false), deleteMovie);
+movieRouter.route("/update-movie/:id").put(updateMovie);
+movieRouter.route("/delete-movie/:id").delete(deleteMovie);
 
 export default movieRouter;

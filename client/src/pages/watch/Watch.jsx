@@ -16,15 +16,6 @@ function Watch() {
           Home
         </div>
       </Link>
-      {/* <video
-        className="video"
-        autoPlay={true}
-        loop
-        controls
-        progress
-        type="video/mp4"
-        src={movie.video}
-      /> */}
 
       <ReactPlayer
         className="video"
