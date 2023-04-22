@@ -65,3 +65,18 @@ export const getUserStats = async (req, res, next) => {
     next(error);
   }
 };
+// create a user
+
+export const createNewUser = async (req, res, next) => {
+  try {
+    const user = await User.create(req.body);
+    if (user) {
+      res.json({
+        message: "new user has been created",
+      });
+      console.log(user);
+    }
+  } catch (err) {
+    next(err);
+  }
+};

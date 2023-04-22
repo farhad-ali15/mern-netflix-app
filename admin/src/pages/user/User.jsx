@@ -1,21 +1,22 @@
 import {
-  CalendarToday,
-  LocationSearching,
+  AdminPanelSettingsOutlined,
   MailOutline,
   PermIdentity,
-  PhoneAndroid,
   Publish,
 } from "@mui/icons-material";
 import "./user.css";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function User() {
+  const location = useLocation();
+  const user = location.state.some;
+
   return (
     <div className="user">
       <div className="userTitleContainer">
         <h1 className="userTitle">Edit User</h1>
-        <Link to="/new-user">
+        <Link to="/add-user">
           <button className="userAddButton">Create</button>
         </Link>
       </div>
@@ -23,38 +24,29 @@ function User() {
       <div className="userContainer">
         <div className="userShow">
           <div className="userShowTop">
-            <img
-              src="https://www.erc.com.pk/wp-content/uploads/person4.jpg"
-              alt=""
-              className="userShowImg"
-            />
+            <img src={user.profilePic} alt="" className="userShowImg" />
             <div className="userShowTopTitle">
-              <span className="userShowUsername">James Smith</span>
-              <span className="userShowUserTitle">Jocker</span>
+              <span className="userShowUsername">{user.userName}</span>
+              <span className="userShowUserTitle">{user.email}</span>
             </div>
           </div>
           <div className="userShoewBottom">
             <span className="userShowTitle">Acount Details</span>
             <div className="userShowInfo">
               <PermIdentity className="userShowIcon" />
-              <span className="userShowInfoTitle">jamessmith99</span>
+              <span className="userShowInfoTitle">{user.userName}</span>
             </div>
+
+            <span className="userShowTitle">Admin Status Details</span>
             <div className="userShowInfo">
-              <CalendarToday className="userShowIcon" />
-              <span className="userShowInfoTitle">10.12.1988</span>
-            </div>
-            <span className="userShowTitle">Contact Details</span>
-            <div className="userShowInfo">
-              <PhoneAndroid className="userShowIcon" />
-              <span className="userShowInfoTitle">00-92-3433616066</span>
+              <AdminPanelSettingsOutlined className="userShowIcon" />
+              <span className="userShowInfoTitle">
+                {user.isAdmin ? "Admin" : "Not an Admin"}
+              </span>
             </div>
             <div className="userShowInfo">
               <MailOutline className="userShowIcon" />
-              <span className="userShowInfoTitle">jamessmith99@gmail.com</span>
-            </div>
-            <div className="userShowInfo">
-              <LocationSearching className="userShowIcon" />
-              <span className="userShowInfoTitle">New york | USA </span>
+              <span className="userShowInfoTitle">{user.email}</span>
             </div>
           </div>
         </div>
@@ -66,50 +58,36 @@ function User() {
                 <label>Username</label>
                 <input
                   type="text"
-                  placeholder="jamessmith99"
+                  placeholder={user.userName}
                   className="userUpdateInput"
                 />
               </div>
-              <div className="userUpdateItem">
-                <label>Full Name</label>
-                <input
-                  type="text"
-                  placeholder="james smith"
-                  className="userUpdateInput"
-                />
-              </div>
+
               <div className="userUpdateItem">
                 <label>Email</label>
                 <input
                   type="text"
-                  placeholder="jamessmith99@gmail.com"
+                  placeholder={user.email}
                   className="userUpdateInput"
                 />
               </div>
               <div className="userUpdateItem">
-                <label>Address</label>
-                <input
-                  type="text"
-                  placeholder="New york | USA "
-                  className="userUpdateInput"
-                />
+                <label>Password</label>
+                <input type="password" className="userUpdateInput" />
               </div>
+
               <div className="userUpdateItem">
-                <label>Phone</label>
+                <label>Admin Status</label>
                 <input
                   type="text"
-                  placeholder="00-92-3433616066"
+                  placeholder="false"
                   className="userUpdateInput"
                 />
               </div>
             </div>
             <div className="userUpdateRight">
               <div className="userUpdateUpload">
-                <img
-                  src="https://www.erc.com.pk/wp-content/uploads/person4.jpg"
-                  alt=""
-                  className="userUpdateImg"
-                />
+                <img src={user.profilePic} alt="" className="userUpdateImg" />
                 <label htmlFor="file">
                   <Publish className="userUpdateIcon" />
                 </label>

@@ -8,7 +8,7 @@ export default function List() {
     <div className="product">
       <div className="productTitleContainer">
         <h1 className="productTitle">List</h1>
-        <Link to="/newList">
+        <Link to="/new-List">
           <button className="productAddButton">Create</button>
         </Link>
       </div>

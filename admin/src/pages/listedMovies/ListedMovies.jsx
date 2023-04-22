@@ -47,9 +47,10 @@ export default function ListedMovies() {
     <div className="productList">
       <DataGrid
         rows={lists}
-        disableSelectionOnClick
+        disableRowSelectionOnClick
         columns={columns}
-        pageSize={8}
+        pagination
+        paginationModel={{ page: 0, pageSize: 8 }}
         checkboxSelection
         getRowId={(r) => r._id}
       />

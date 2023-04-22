@@ -9,10 +9,12 @@ import {
   deleteUser,
   getUserById,
   getUserStats,
+  createNewUser,
 } from "../controllers/usercontroller.js";
 
 const userRouter = express.Router();
 
+userRouter.route("/add-user").post(createNewUser);
 userRouter.route("/").get(getAllUsers);
 userRouter.route("/:id").get(getUserById);
 userRouter.route("/update-user/:id").put(updateUser);

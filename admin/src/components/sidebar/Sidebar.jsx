@@ -63,10 +63,12 @@ function Sidebar() {
                 Lists
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <AssessmentOutlined className="sidebarIcons" />
-              Reports
-            </li>
+            <Link className="link" to="">
+              <li className="sidebarListItem">
+                <AssessmentOutlined className="sidebarIcons" />
+                Reports
+              </li>
+            </Link>
           </ul>
         </div>
       </div>
