@@ -15,9 +15,9 @@
 
     select {
       cursor: pointer;
-      background-color: var(--main-color);
+      background-color: var(--main-color) !important;
       border: 1px solid white;
-      color: white;
+      color: rgb(8, 8, 8);
       margin-left: 20px;
       padding: 5px;
     }

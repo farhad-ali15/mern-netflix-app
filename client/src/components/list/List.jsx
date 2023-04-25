@@ -3,13 +3,13 @@ import {
   ArrowForwardIosOutlined,
 } from "@mui/icons-material";
 import "./List.scss";
-import ListItem from "..//listItem/ListItem";
+import ListItem from "../listItem/ListItem";
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
 
 function List({ list }) {
   const [slideNumber, setSlideNumber] = useState(0);
   const [isMoved, setIsMoved] = useState(false);
+  const [clickLimit, setClickLimit] = useState(window.innerWidth / 230);
 
   const listRef = useRef();
   const handleClick = (direction) => {
@@ -19,7 +19,7 @@ function List({ list }) {
       listRef.current.style.transform = `translateX(${236 + distance}px)`;
       setSlideNumber(slideNumber - 1);
     }
-    if (direction === "right" && slideNumber < 5) {
+    if (direction === "right" && slideNumber < 10 - clickLimit) {
       listRef.current.style.transform = `translateX(${-236 + distance}px)`;
       setSlideNumber(slideNumber + 1);
     }

@@ -4,11 +4,19 @@ import {
   Search,
 } from "@mui/icons-material";
 import "./Navbar.scss";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../authContext/AuthContext";
+import { logout } from "../../authContext/AuthAction";
 
 function Navbar() {
+  const Navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logout());
+    Navigate("/login");
+  };
+  const { dispatch } = useContext(AuthContext);
   const [isScrolled, setIsScrolled] = useState(false);
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -28,10 +36,10 @@ function Navbar() {
             <span>Homepage</span>
           </Link>
           <Link to="/series" className="link">
-            <span>Series</span>
+            <span className="navbarmainlinks">Series</span>
           </Link>
           <Link to="/movies" className="link">
-            <span>Movies</span>
+            <span className="navbarmainlinks">Movies</span>
           </Link>
 
           <span>New and Popular</span>
@@ -49,7 +57,7 @@ function Navbar() {
             <ArrowDropDownRounded className="icon" />
             <div className="options">
               <span>Settings</span>
-              <span>Logout</span>
+              <span onClick={handleLogout}>Logout</span>
             </div>
           </div>
         </div>

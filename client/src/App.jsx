@@ -1,14 +1,15 @@
 import "./App.scss";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import Home from "./pages/home/Home.jsx";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Watch from "./pages/watch/Watch";
+import { AuthContext } from "./authContext/AuthContext.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [user, setUser] = useState(true);
+  const { user } = useContext(AuthContext);
 
   function redirect(to) {
     return <Navigate to={to} replace />;
@@ -33,7 +34,7 @@ function App() {
           {user && (
             <>
               <Route path="/watch" element={<Watch />}></Route>
-              <Route path="/movies" element={<Home type="movies" />}></Route>
+              <Route path="/movies" element={<Home type="movie" />}></Route>
               <Route path="/series" element={<Home type="series" />}></Route>)
             </>
           )}
